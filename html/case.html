@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DinoClone - Відкрити Кейс</title>
+  <!-- Стилі для хедера, футера та загальні стилі сайту -->
+  <link rel="stylesheet" href="/styles/style1.css" />
+  <link rel="stylesheet" href="/styles/header.css" />   <!-- Стилі хедера -->
+  <link rel="stylesheet" href="/styles/footer.css" />   <!-- Стилі футера -->
+  <link rel="stylesheet" href="/styles/style.css" /> 
+</head>
+<body>
+  <!-- Хедер -->
+  <header class="site-header">
+    <!-- Вміст хедера буде завантажено сюди main.js -->
+  </header>
+
+  <!-- Основний контент сторінки кейсу (з рулеткою) -->
+  <main>
+    <div class="container"> <!-- Цей .container зі style.css -->
+      <h1 class="case-title">Кейс: Головний</h1>
+      
+      <div class="case-viewport">
+        <div class="case-pointer"></div>
+        <div class="case-items-reel" id="caseItemsReel">
+          <!-- Предмети генеруються JS -->
+        </div>
+      </div>
+
+      <button class="open-button" onclick="startCaseOpening()">ВІДКРИТИ</button>
+      
+      <!-- СПИСОК МОЖЛИВИХ ПРЕДМЕТІВ -->
+      <div class="case-content-details">
+        <h2 class="possible-drops-title">Що може випасти:</h2>
+        <div class="case-possible-drops" id="possibleDrops">
+          <!-- Сюди будуть додані всі предмети кейсу через JS -->
+        </div>
+      </div>
+      <!-- КІНЕЦЬ СПИСКУ МОЖЛИВИХ ПРЕДМЕТІВ -->
+
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer class="site-footer">
+    <!-- Вміст футера буде завантажено сюди main.js -->
+  </footer>
+
+  <script src="/javaScript/main.js" defer></script> <!-- ДОДАНО: для завантаження хедера/футера -->
+  <script src="/javaScript/case.js"></script>     <!-- Скрипт для логіки цієї сторінки -->
+</body>
+</html>

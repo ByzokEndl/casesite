@@ -1,0 +1,104 @@
+/* casesite/components/footer.css */
+.site-footer-component { /* Звертаємось до обгортки */
+  background-color: #0f0f16;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.site-footer-component .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-footer-component .footer-left,
+.site-footer-component .footer-center,
+.site-footer-component .footer-right {
+  flex: 1 1 300px;
+}
+
+.site-footer-component .footer-left h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.site-footer-component .footer-left p {
+  margin: 0 0 20px;
+  font-size: 14px;
+}
+
+.site-footer-component .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.site-footer-component .footer-links li {
+  margin: 6px 0;
+}
+
+.site-footer-component .footer-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.site-footer-component .footer-links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer-component .footer-email {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ffaa2c;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.site-footer-component .footer-email .email-icon {
+  margin-right: 8px;
+}
+
+.site-footer-component .footer-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.site-footer-component .footer-stats div {
+  text-align: center;
+  color: #fff;
+}
+
+.site-footer-component .footer-stats img {
+  width: 30px;
+  margin-bottom: 5px;
+}
+
+.site-footer-component .footer-right .social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.site-footer-component .footer-right .social-icons img {
+  width: 30px;
+  filter: brightness(1.5);
+  transition: transform 0.3s ease;
+}
+
+.site-footer-component .footer-right .social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.site-footer-component .footer-address {
+  font-size: 12px;
+  color: #888;
+}

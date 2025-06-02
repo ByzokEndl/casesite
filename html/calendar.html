@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DinoDrop Clone — Календар</title>
+  <link rel="stylesheet" href="/styles/style1.css" />   <!-- Основні стилі сайту -->
+  <link rel="stylesheet" href="/styles/header.css" />   <!-- Стилі хедера -->
+  <link rel="stylesheet" href="/styles/footer.css" />   <!-- Стилі футера -->
+  <link rel="stylesheet" href="/styles/calendar.css" /> <!-- Стилі тільки для сторінки календаря -->
+</head>
+<body>
+  <header class="site-header">
+    <!-- Header content will be loaded here by main.js -->
+  </header>
+
+  <main>
+    <div class="calendar-page-container">
+      <div class="calendar-banner">
+        <div class="calendar-banner-info">
+          <h1>ЧЕРВНЕВИЙ <br>КАЛЕНДАР</h1>
+          <span class="current-day-badge">2 ДЕНЬ</span>
+          <div class="calendar-tasks">
+            <div class="calendar-task">
+              <span class="task-name">Поповніть баланс на 149 <span class="task-currency">🪙</span></span>
+              <span class="task-progress">0/149</span>
+            </div>
+            <div class="calendar-task">
+              <span class="task-name">Відкрийте кейсів на 500 <span class="task-currency">🪙</span></span>
+              <span class="task-progress">0/500</span>
+            </div>
+          </div>
+          <button class="calendar-rules-btn">❓ Правила календаря</button>
+        </div>
+        <div class="calendar-banner-image">
+          <div class="image-placeholder">
+            <span>ЧЕРВЕНЬ</span>
+            <span>КАЛЕНДАР</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="calendar-grid" id="calendarGrid">
+        <!-- Дні будуть генеруватися тут JS -->
+      </div>
+    </div>
+
+    <div id="calendarRulesModal" class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close-btn" id="closeCalendarRulesModal">×</button>
+        <h2>Правила участі та розіграшу бонусів</h2>
+        <p>Для отримання бонусу за кожен із днів, необхідно виконувати поповнення щодня від 149 <span class="currency-icon">🪙</span>.</p>
+        <p>Необхідно дотримуватися активності на сайті (відкривати EGG-кейси, формувати покращення та контракти) протягом поточних 24 годин загальною вартістю від 500 <span class="currency-icon">🪙</span>. Іншими словами, ваша сума відкритих кейсів, покращень та контрактів по сайту має бути від 500 <span class="currency-icon">🪙</span>.</p>
+        <p>Для відкриття наступного бонусного дня, обов'язково необхідно забрати бонус попереднього дня.</p>
+        <p>Забирайте бонуси щодня, виконуючи прості умови.</p>
+        <p>Користувачі, які виконали всі умови протягом дії всього календаря (забрали бонуси за 30 днів), беруть участь у розіграші супер-бонусу, натиснувши на кнопку 'Брати участь', яка буде активна після завершення календаря.</p>
+        <p>Скидання даних відбувається щодня о 00:00 UTC.</p>
+        <p>Якщо користувач не виконав необхідні умови в рамках конкретного дня, прогрес попереднього дня буде недоступний.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <!-- Footer content will be loaded here by main.js -->
+  </footer>
+
+  <script src="/javaScript/main.js" defer></script>
+  <script src="/javaScript/calendar.js" defer></script>
+</body>
+</html>

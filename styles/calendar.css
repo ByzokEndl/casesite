@@ -1,0 +1,256 @@
+/* Стилі для сторінки календаря */
+body.calendar-page-active { /* Можна додати клас до body в JS для специфічності, якщо потрібно */
+  background-color: #1a1c28; /* Темний фон як на скріншоті */
+}
+.calendar-page-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  color: #fff;
+}
+
+.calendar-banner {
+  background-color: #2c2f40; /* Колір фону банера */
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.calendar-banner-info {
+  flex-basis: 50%;
+}
+
+.calendar-banner-info h1 {
+  font-size: 2.8rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.calendar-banner-info .current-day-badge {
+  background-color: #4a90e2; /* Синій колір для позначки дня */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.calendar-task {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+.calendar-task .task-name {
+  color: #b0b8c4;
+}
+.calendar-task .task-progress {
+  float: right;
+  font-weight: bold;
+}
+ .calendar-task .task-currency, .currency-icon { /* Додано .currency-icon сюди */
+    color: #f4b841; /* Колір іконки валюти */
+ }
+
+
+.calendar-rules-btn {
+  background-color: #3a3f53;
+  color: #c0c8d4;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+.calendar-rules-btn:hover {
+  background-color: #4b5166;
+}
+
+.calendar-banner-image {
+  flex-basis: 45%;
+  text-align: center; /* Для плейсхолдера */
+}
+.calendar-banner-image img { /* Стиль для майбутнього зображення */
+    max-width: 100%;
+    max-height: 200px; /* Обмеження висоти, щоб не було завеликим */
+    object-fit: contain;
+}
+ /* Плейсхолдер для зображення */
+.image-placeholder {
+    background: linear-gradient(45deg, #5f72be, #9a76c0);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+.image-placeholder span:first-child {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: -10px; /* Наближення до нижнього тексту */
+}
+ .image-placeholder span:last-child {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Адаптивна сітка */
+  gap: 20px;
+}
+
+.calendar-day {
+  background-color: #2c2f40; /* Фон дня */
+  border-radius: 12px; /* Закруглені кути */
+  aspect-ratio: 1 / 1; /* Робить блок квадратним */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #6f788c; /* Колір тексту неактивного дня */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 2px solid transparent; /* Для майбутнього активного стану */
+}
+/* Пунктирна рамка всередині */
+.calendar-day::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px dashed #42485c; /* Колір пунктирної рамки */
+    border-radius: 8px; /* Закруглення для внутрішньої рамки */
+}
+
+
+.calendar-day.active { /* Активний день, завдання для якого відображаються */
+  color: #fff;
+  border-color: #4a90e2;
+  box-shadow: 0 0 15px #4a90e2;
+}
+.calendar-day.active::before{
+    border-color: #69a1e9;
+}
+
+.calendar-day.completed { /* Виконаний день */
+  background-color: #3a865b; /* Зелений для виконаних */
+  color: #fff;
+}
+.calendar-day.completed::before {
+    border-color: #5cb85c;
+}
+
+
+.calendar-day.locked { /* Заблокований день */
+  background-color: #252835;
+  color: #4a4e60;
+  cursor: not-allowed;
+}
+ .calendar-day.locked::before {
+    border-color: #383c4a;
+}
+
+.calendar-day:not(.locked):hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* --- СТИЛІ ДЛЯ МОДАЛЬНОГО ВІКНА ПРАВИЛ --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.modal-content {
+  background-color: #2c2f40;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 550px;
+  color: #e0e0e0;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #c0c8d4;
+}
+.modal-content p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: #ffffff;
+}
+/* Кінець стилів для модального вікна */

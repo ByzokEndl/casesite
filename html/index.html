@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DinoDrop Clone — Головна</title>
+  <link rel="stylesheet" href="/styles/style1.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/footer.css" />
+  <!-- Add any page-specific CSS here -->
+</head>
+<body>
+ <header class="site-header">
+  <!-- Header content will be loaded here by main.js -->
+ </header>
+
+<section class="welcome-banner">
+  <div class="welcome-content">
+    <h1>Вітаємо на DinoClone</h1>
+    <p>Поринь у світ унікальних кейсів і захопливих дропів!</p>
+    <a href="#cases-section" class="btn-banner">Відкрити кейси</a>
+  </div>
+</section>
+
+  <main>
+    <section id="cases-section" class="cases-section"> <!-- Added id for the link -->
+      <h1 style="text-align:center; margin-top:30px;">Всі кейси</h1>
+      <div id="casesContainer" class="cases-grid"></div>
+    </section>
+  </main>
+
+ <footer class="site-footer">
+  <!-- Footer content will be loaded here by main.js -->
+ </footer>
+
+<script src="/javaScript/main.js" defer></script>
+<script src="/javaScript/cases.js" defer></script>
+<!-- No need to link header.js here if main.js handles its dynamic loading and initialization -->
+</body>
+</html>

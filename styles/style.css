@@ -1,0 +1,253 @@
+/* casesite/style.css */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+main { 
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.container {
+    padding: 20px;
+    max-width: 900px; 
+    margin: 0 auto; 
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.case-title {
+    text-align: center;
+    font-size: 2.2rem; 
+    margin-bottom: 30px;
+    color: #00ffd5;
+    font-weight: 600;
+}
+
+.case-viewport {
+  position: relative; 
+  width: 100%; 
+  height: 230px; 
+  margin: 30px auto; 
+  border: 3px solid #00c2a1; 
+  border-radius: 10px;
+  background: #1f1f1f; 
+  overflow: hidden; 
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5); 
+}
+
+.case-pointer {
+  position: absolute;
+  top: -5px; 
+  bottom: -5px;
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 4px; 
+  background-color: #00ffd5; 
+  z-index: 5; 
+  box-shadow: 0 0 8px #00ffd5, 0 0 15px #00ffd5; 
+  border-radius: 2px;
+}
+
+.case-items-reel {
+  display: flex; 
+  height: 100%; 
+  align-items: center; 
+  will-change: transform; 
+}
+
+.case-item {
+  flex: 0 0 auto; 
+  width: 140px; 
+  height: 160px; 
+  background-color: #2b2b2b; 
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 10px; 
+  box-shadow: 0 3px 7px rgba(0,0,0,0.4);
+  color: #e0e0e0; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  position: relative; 
+  overflow: hidden; 
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              opacity 0.4s ease,
+              width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+              margin 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+              box-shadow 0.4s ease,
+              background-color 0.4s ease;
+}
+
+.case-item img {
+  max-width: 90px;
+  max-height: 80px;
+  object-fit: contain; 
+  border-radius: 5px;
+  margin-bottom: 8px; 
+  transition: transform 0.3s ease; 
+}
+
+.case-item .details {
+  opacity: 0;
+  transform: translateY(15px); 
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s; 
+  width: 100%;
+  position: absolute; 
+  bottom: 10px; 
+  left: 0;
+}
+
+.case-item .name,
+.case-item .price,
+.case-item .chance {
+  margin-top: 2px; 
+  font-size: 0.85rem; 
+  line-height: 1.1;
+  word-break: break-word;
+  color: #ccc; 
+}
+.case-item .name {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+.case-item .price {
+  color: #00ffd5; 
+  font-weight: bold;
+}
+.case-item .chance {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.case-item.is-winner {
+  transform: scale(1.2); 
+  width: 160px;  
+  height: 190px;
+  margin: 0 20px; 
+  opacity: 1 !important; 
+  z-index: 3; 
+  box-shadow: 0 0 20px rgba(0, 255, 213, 0.6), 0 0 30px rgba(0, 255, 213, 0.4); 
+  background-color: #333; 
+  justify-content: flex-start; 
+  padding-top: 15px; 
+}
+
+.case-item.is-winner img {
+  margin-bottom: 5px; 
+}
+
+.case-item.is-winner .details {
+  opacity: 1; 
+  transform: translateY(0); 
+  position: relative; 
+  bottom: auto;
+  margin-top: 10px; 
+}
+
+.reel-has-winner .case-item:not(.is-winner) {
+  opacity: 0.35; 
+  transform: scale(0.9); 
+}
+
+.open-button {
+    display: block;
+    margin: 40px auto 30px auto; 
+    padding: 15px 35px;
+    background-color: #00ffd5;
+    color: #121212;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+.open-button:hover {
+    background-color: #00c2a1;
+    transform: translateY(-2px);
+}
+.open-button:disabled { 
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+    transform: translateY(0);
+}
+
+/* Стилі для списку можливих предметів */
+.case-content-details {
+  margin-top: 40px; 
+  padding: 20px;
+  background-color: #1f1f1f; 
+  border-radius: 10px;
+  border: 1px solid #00c2a1; 
+}
+
+.possible-drops-title {
+  text-align: center;
+  font-size: 1.5em;
+  color: #00ffd5;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.case-possible-drops {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
+  gap: 15px; 
+}
+
+.possible-drop-item { 
+  background-color: #2b2b2b; 
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; 
+  min-height: 170px; 
+}
+
+.possible-drop-item img {
+  max-width: 80px;
+  max-height: 70px;
+  object-fit: contain;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.possible-drop-item .name {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 4px;
+  line-height: 1.2;
+  max-height: 2.4em; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
+.possible-drop-item .price {
+  font-size: 0.8em;
+  color: #00ffd5;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.possible-drop-item .chance {
+  font-size: 0.75em;
+  color: #888;
+}
