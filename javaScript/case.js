@@ -1,3 +1,9 @@
+// /casesite/javaScript/case.js
+// Цей код базується на тому, що ви надали, і передбачає, що:
+// 1. originalItems - це статичний масив предметів для ЦЬОГО кейсу.
+// 2. Файл caseAudio.js підключений до HTML і визначає функції
+//    playCaseSpinSound() та stopCaseSpinSound() глобально.
+
 const originalItems = [ 
       { name: 'Dragon Knife', price: 250, chance: 1, image: 'https://picsum.photos/id/10/200' },
       { name: 'Tiger AK', price: 120, chance: 5, image: 'https://picsum.photos/id/20/200' },
@@ -19,13 +25,13 @@ const originalItems = [
     const reelElement = document.getElementById('caseItemsReel');
     const openCaseButton = document.querySelector('.open-button');
     const viewportElement = document.querySelector('.case-viewport');
-    const possibleDropsContainer = document.getElementById('possibleDrops'); // Контейнер для списку можливих дропів
+    const possibleDropsContainer = document.getElementById('possibleDrops');
 
     const ITEM_BASE_WIDTH = 140; 
     const ITEM_MARGIN_HORIZONTAL = 10;         
     const EFFECTIVE_ITEM_WIDTH = ITEM_BASE_WIDTH + (ITEM_MARGIN_HORIZONTAL * 2); 
 
-    const REEL_ITEMS_COUNT_MULTIPLIER = 7; 
+    const REEL_ITEMS_COUNT_MULTIPLIER = 12; // Збільшено для 9-секундної анімації
     let isSpinningActive = false;
     let generatedReelElements = []; 
 
@@ -50,8 +56,12 @@ const originalItems = [
       }
       
       const targetStopIndex = Math.floor(tempReelItems.length * 0.8) + Math.floor(Math.random() * 5);
-      const winnerCloneInReel = { ...winningItemDataForReel, _isWinnerPlaceholder: true };
-      tempReelItems.splice(targetStopIndex, 0, winnerCloneInReel); 
+      // Клонуємо об'єкт переможця та додаємо мітку
+      const winnerCloneInReel = winningItemDataForReel ? { ...winningItemDataForReel, _isWinnerPlaceholder: true } : null;
+      
+      if(winnerCloneInReel){
+          tempReelItems.splice(targetStopIndex, 0, winnerCloneInReel);
+      }
 
       tempReelItems.forEach((itemData) => {
         const itemDiv = document.createElement('div');
@@ -73,16 +83,21 @@ const originalItems = [
         generatedReelElements.push(itemDiv); 
       });
       
-      const actualWinnerDomIndex = generatedReelElements.findIndex(el => el.dataset.name === winningItemDataForReel.name && tempReelItems[generatedReelElements.indexOf(el)]._isWinnerPlaceholder);
-      
-      if (actualWinnerDomIndex !== -1) {
-        const originalWinnerDataObj = tempReelItems[actualWinnerDomIndex];
-        if (originalWinnerDataObj && originalWinnerDataObj._isWinnerPlaceholder) {
-            delete originalWinnerDataObj._isWinnerPlaceholder;
-        }
-        return actualWinnerDomIndex;
+      if (winnerCloneInReel) {
+          const actualWinnerDomIndex = generatedReelElements.findIndex(el => 
+              el.dataset.name === winningItemDataForReel.name && 
+              tempReelItems[generatedReelElements.indexOf(el)]._isWinnerPlaceholder === true
+          );
+          
+          if (actualWinnerDomIndex !== -1) {
+            const originalWinnerDataObj = tempReelItems[actualWinnerDomIndex]; // Звертаємось до масиву даних
+            if (originalWinnerDataObj && originalWinnerDataObj._isWinnerPlaceholder) {
+                delete originalWinnerDataObj._isWinnerPlaceholder;
+            }
+            return actualWinnerDomIndex;
+          }
       }
-      return targetStopIndex;
+      return targetStopIndex; // Якщо переможець не був вказаний, повертаємо розрахований індекс
     }
 
     function determineWinningItem() {
@@ -122,52 +137,94 @@ const originalItems = [
       if (isSpinningActive) return; 
 
       isSpinningActive = true;
-      openCaseButton.disabled = true;
+      if(openCaseButton) openCaseButton.disabled = true;
 
       generatedReelElements.forEach(el => el.classList.remove('is-winner'));
-      reelElement.classList.remove('reel-has-winner');
+      if(reelElement) reelElement.classList.remove('reel-has-winner');
 
       const winningItemObject = determineWinningItem();
       const winningItemDomIndex = populateReelWithItems(winningItemObject);
      
       await new Promise(resolve => setTimeout(resolve, 60)); 
 
+      if (winningItemDomIndex < 0 || winningItemDomIndex >= generatedReelElements.length) {
+          console.error("Некоректний індекс виграшного елемента:", winningItemDomIndex, "Кількість елементів:", generatedReelElements.length);
+          isSpinningActive = false;
+          if(openCaseButton) openCaseButton.disabled = false;
+          return;
+      }
       const targetHtmlElement = generatedReelElements[winningItemDomIndex]; 
+      
       if (!targetHtmlElement) {
-        console.error("Winning DOM element not found in the reel!");
+        console.error("Winning DOM element not found in the reel! Index:", winningItemDomIndex);
         isSpinningActive = false;
-        openCaseButton.disabled = false;
+        if(openCaseButton) openCaseButton.disabled = false;
         return;
       }
+      if (!viewportElement) {
+        console.error("Viewport element not found!");
+        isSpinningActive = false;
+        if(openCaseButton) openCaseButton.disabled = false;
+        return;
+      }
+
 
       const viewportCenterX = viewportElement.offsetWidth / 2;
       const targetElementOffset = targetHtmlElement.offsetLeft;
       const targetElementWidthForCalc = EFFECTIVE_ITEM_WIDTH; 
       const randomPixelOffset = (Math.random() - 0.5) * (targetElementWidthForCalc * 0.3); 
       let finalScrollToX = viewportCenterX - targetElementOffset - (targetElementWidthForCalc / 2) + randomPixelOffset;
+      
       const minScrollPosition = 0; 
-      const maxScrollPosition = -(reelElement.scrollWidth - viewportElement.offsetWidth);
+      const maxScrollableWidth = reelElement.scrollWidth - viewportElement.offsetWidth;
+      const maxScrollPosition = maxScrollableWidth > 0 ? -maxScrollableWidth : 0;
       finalScrollToX = Math.max(maxScrollPosition, Math.min(minScrollPosition, finalScrollToX));
-      const animationTimeMs = 4500 + Math.random() * 2000; 
-      reelElement.style.transition = `transform ${animationTimeMs / 1000}s cubic-bezier(0.15, 0.7, 0.25, 1)`; 
+      
+      const animationDurationSeconds = 9; // Рівно 9 секунд
+      
+      // Відтворення звуку через caseAudio.js
+      if (typeof playCaseSpinSound === 'function') {
+          playCaseSpinSound();
+      } else {
+          console.warn("Функція playCaseSpinSound не визначена. Перевірте підключення caseAudio.js");
+      }
+      
+      reelElement.style.transition = `transform ${animationDurationSeconds}s cubic-bezier(0.15, 0.7, 0.25, 1)`; 
       reelElement.style.transform = `translateX(${finalScrollToX}px)`;
      
       reelElement.addEventListener('transitionend', function handleSpinEnd() {
         reelElement.removeEventListener('transitionend', handleSpinEnd); 
 
+        // Зупинка звуку через caseAudio.js
+        if (typeof stopCaseSpinSound === 'function') {
+            stopCaseSpinSound();
+        } else {
+            console.warn("Функція stopCaseSpinSound не визначена. Перевірте підключення caseAudio.js");
+        }
+
         targetHtmlElement.classList.add('is-winner');
         reelElement.classList.add('reel-has-winner');
             
         isSpinningActive = false;
-        openCaseButton.disabled = false;
+        if(openCaseButton) openCaseButton.disabled = false;
       }, { once: true }); 
     }
 
     // ВИКЛИКИ ФУНКЦІЙ ПРИ ЗАВАНТАЖЕННІ
-    populateReelWithItems(originalItems[Math.floor(Math.random() * originalItems.length)]);
-    displayPossibleDrops(); 
+    // Переконуємося, що ці функції викликаються після того, як DOM готовий
+    // і якщо ці елементи існують на сторінці.
+    // Якщо цей скрипт завантажується з defer, DOMContentLoaded може бути зайвим тут,
+    // але для безпеки можна залишити або перенести виклик populate/display у initializeCasePage.
+    if (reelElement && possibleDropsContainer) {
+        populateReelWithItems(originalItems[Math.floor(Math.random() * originalItems.length)]);
+        displayPossibleDrops(); 
+    }
 
-    // --- JS для модального вікна налаштувань (ТОЧНО ЯК НА INDEX.HTML) ---
+
+    // --- JS для модального вікна налаштувань ---
+    // Цей код передбачає, що елементи хедера вже є в DOM на момент виконання.
+    // Якщо хедер завантажується динамічно через main.js, цей код краще перенести
+    // в callback функцію завантаження хедера в main.js або в окремий header.js.
     const settingsBtn = document.querySelector(".settings-btn");
     const settingsModal = document.getElementById("settings-modal");
     const closeBtn = document.getElementById("close-settings"); 
@@ -175,26 +232,34 @@ const originalItems = [
 
     if (settingsBtn && settingsModal && closeBtn) { 
         settingsBtn.addEventListener("click", () => {
-            settingsModal.classList.remove("hidden");
+            if(settingsModal) settingsModal.classList.remove("hidden");
         });
 
         closeBtn.addEventListener("click", () => { 
-            settingsModal.classList.add("hidden");
+            if(settingsModal) settingsModal.classList.add("hidden");
         });
 
-        settingsModal.addEventListener('click', (event) => {
-            if (event.target === settingsModal) {
-                settingsModal.classList.add("hidden");
-            }
-        });
+        if(settingsModal) {
+            settingsModal.addEventListener('click', (event) => {
+                if (event.target === settingsModal) {
+                    settingsModal.classList.add("hidden");
+                }
+            });
+        }
     }
     
-    if (soundToggle) {
+    if (soundToggle && settingsModal) { // Додано перевірку на settingsModal
         soundToggle.addEventListener("change", () => {
-            const audios = document.querySelectorAll("audio");
-            audios.forEach(audio => {
-            audio.muted = !soundToggle.checked;
+            // Застосовуємо тільки до аудіо в модальному вікні
+            const audiosInModal = settingsModal.querySelectorAll("audio");
+            audiosInModal.forEach(audio => {
+                audio.muted = !soundToggle.checked;
             });
+        });
+        // Початковий стан звуків у модалці
+        const audiosInModal = settingsModal.querySelectorAll("audio");
+        audiosInModal.forEach(audio => {
+           audio.muted = !soundToggle.checked;
         });
     }
     // --- Кінець JS для модального вікна ---

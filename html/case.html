@@ -47,7 +47,16 @@
     <!-- Вміст футера буде завантажено сюди main.js -->
   </footer>
 
+  <!-- АУДІО ЕЛЕМЕНТ ДЛЯ ЗВУКУ ПРОКРУТКИ -->
+  <audio id="reelSpinSound" src="/music/go-new-gambling.mp3" preload="auto"></audio>
+  <!-- Переконайтеся, що шлях /sounds/reel_spin.mp3 правильний відносно кореня сайту -->
+  <!-- Якщо папка sounds всередині casesite, то шлях буде /sounds/reel_spin.mp3 -->
+  <!-- Якщо папка sounds на одному рівні з casesite, то ../sounds/reel_spin.mp3 (але краще абсолютний від кореня) -->
+
+
   <script src="/javaScript/main.js" defer></script> <!-- ДОДАНО: для завантаження хедера/футера -->
-  <script src="/javaScript/case.js"></script>     <!-- Скрипт для логіки цієї сторінки -->
+  <script src="/javaScript/case.js"></script>
+  
+  <script src="/javaScript/caseAudio.js" defer></script>      <!-- Скрипт для логіки цієї сторінки -->
 </body>
 </html>
