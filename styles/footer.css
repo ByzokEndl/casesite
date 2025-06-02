@@ -1,104 +1,241 @@
-/* casesite/components/footer.css */
-.site-footer-component { /* Звертаємось до обгортки */
-  background-color: #0f0f16;
-  color: #fff;
-  padding: 40px 20px;
-  font-family: sans-serif;
-  font-size: 14px;
+/* Path: /casesite/styles/footer.css */
+.site-footer-component.new-footer-design {
+  background-color: #1c1525;
+  color: #a09aab; /* Трохи змінив для кращого контрасту з текстом */
+  padding: 40px 20px; /* Збільшив вертикальні відступи */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 1px solid #3a2f4b;
+  position: relative;
+  overflow: hidden; 
+  min-height: 500px; /* Мінімальна висота, щоб пістолети вмістилися */
 }
 
-.site-footer-component .footer-container {
+/* Стилі для фонових зображень пістолетів */
+.footer-bg-image {
+  position: absolute;
+  opacity: 0.7; /* Зменшив непрозорість для більш "фонового" ефекту */
+  pointer-events: none;
+  z-index: 0;
+  object-fit: contain; /* Щоб зображення не спотворювалося при зміні розміру */
+}
+
+.footer-bg-image-left {
+  left: -5%;  /* Використовуємо відсотки для кращої адаптивності */
+  bottom: -5%;
+  width: 65%; /* Значно збільшуємо ширину */
+  max-width: 700px; /* Обмеження максимального розміру */
+  transform: rotate(-20deg) translateY(10%); /* Коригуємо нахил і позицію */
+}
+
+.footer-bg-image-right {
+  right: -5%; /* Використовуємо відсотки */
+  bottom: -12%;
+  width: 70%; /* Значно збільшуємо ширину */
+  max-width: 750px; /* Обмеження максимального розміру */
+  transform: rotate(15deg) scaleX(-1) translateY(10%);
+}
+
+/* Щоб контент був над фоновими зображеннями і мав відступи від країв */
+.footer-top-info,
+.footer-payment-methods,
+.footer-main-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1125px; /* Обмежуємо ширину контенту, щоб він не накладався на краї пістолетів */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px; /* Внутрішні відступи для контенту */
+  padding-right: 15px;
+}
+
+
+.footer-top-info {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px; /* Зменшив */
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-.site-footer-component .footer-left,
-.site-footer-component .footer-center,
-.site-footer-component .footer-right {
-  flex: 1 1 300px;
-}
-
-.site-footer-component .footer-left h4 {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.site-footer-component .footer-left p {
-  margin: 0 0 20px;
-  font-size: 14px;
-}
-
-.site-footer-component .footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px;
-}
-
-.site-footer-component .footer-links li {
-  margin: 6px 0;
-}
-
-.site-footer-component .footer-links a {
-  color: #ccc;
-  text-decoration: none;
-}
-
-.site-footer-component .footer-links a:hover {
-  text-decoration: underline;
-}
-
-.site-footer-component .footer-email {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #ffaa2c;
-  color: #000;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-.site-footer-component .footer-email .email-icon {
-  margin-right: 8px;
-}
-
-.site-footer-component .footer-stats {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.site-footer-component .footer-stats div {
-  text-align: center;
+.footer-logo-brand {
+  font-size: 1rem; /* Зменшив */
+  font-weight: 600;
   color: #fff;
 }
 
-.site-footer-component .footer-stats img {
-  width: 30px;
-  margin-bottom: 5px;
+.footer-legal-links a {
+  color: #a09aab;
+  text-decoration: none;
+  margin-left: 15px; /* Зменшив */
+  font-size: 0.8rem; /* Зменшив */
+  transition: color 0.2s ease;
 }
 
-.site-footer-component .footer-right .social-icons {
+.footer-legal-links a:hover {
+  color: #fff;
+}
+
+.footer-payment-methods {
   display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 25px; /* Зменшив */
+  margin-bottom: 30px; /* Зменшив */
+  padding-bottom: 25px; /* Зменшив */
+  border-bottom: 1px solid #3a2f4b;
 }
 
-.site-footer-component .footer-right .social-icons img {
-  width: 30px;
-  filter: brightness(1.5);
-  transition: transform 0.3s ease;
+.payment-icon {
+  height: 28px; /* Трохи зменшив */
+  filter: grayscale(30%) brightness(1.5);
+}
+.visa-icon { height: 22px; }
+.mastercard-icon { height: 32px; }
+.webmoney-icon { height: 28px; }
+
+
+.footer-main-content {
+  text-align: center;
 }
 
-.site-footer-component .footer-right .social-icons img:hover {
-  transform: scale(1.2);
+.footer-main-content h2 {
+  color: #fff;
+  font-size: 1.4rem; /* Зменшив */
+  margin-bottom: 25px; /* Зменшив */
 }
 
-.site-footer-component .footer-address {
-  font-size: 12px;
-  color: #888;
+.footer-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Трохи зменшив minmax */
+  gap: 20px; /* Зменшив */
+  text-align: left;
+}
+
+.feature-item {
+  padding: 10px; /* Зменшив */
+}
+
+.feature-item h3 {
+  color: #fff;
+  font-size: 1rem; /* Зменшив */
+  margin-top: 0;
+  margin-bottom: 8px; /* Зменшив */
+}
+
+.feature-item p {
+  font-size: 0.85rem; /* Зменшив */
+  line-height: 1.5; /* Зменшив */
+  margin: 0;
+  color: #a09aab;
+}
+
+/* Адаптивність */
+@media (max-width: 1200px) {
+  .footer-bg-image-left {
+    left: -10%;
+    width: 60%;
+  }
+  .footer-bg-image-right {
+    right: -15%;
+    width: 65%;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .site-footer-component.new-footer-design {
+    min-height: auto; /* Забираємо фіксовану висоту */
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .footer-bg-image-left {
+    left: -5%;
+    bottom: 0;
+    width: 55%;
+    opacity: 0.08;
+    transform: rotate(-15deg) translateY(5%);
+  }
+  .footer-bg-image-right {
+    right: -10%;
+    bottom: 0;
+    width: 60%;
+    opacity: 0.08;
+    transform: rotate(10deg) scaleX(-1) translateY(5%);
+  }
+  .footer-main-content h2 {
+    font-size: 1.3rem;
+  }
+  .feature-item h3 {
+    font-size: 0.95rem;
+  }
+  .feature-item p {
+    font-size: 0.8rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .footer-top-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Зменшив */
+  }
+  .footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px; /* Зменшив */
+  }
+  .footer-legal-links a {
+    margin-left: 0;
+  }
+  .footer-payment-methods {
+    gap: 15px; /* Зменшив */
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .payment-icon {
+    height: 22px; /* Зменшив */
+  }
+  .mastercard-icon { height: 28px; }
+
+  /* На мобільних можна ще більше зменшити або приховати пістолети */
+  .footer-bg-image-left {
+    left: 0;
+    width: 50%;
+    opacity: 0.05;
+    bottom: 5%;
+  }
+  .footer-bg-image-right {
+    right: 0;
+    width: 50%;
+    opacity: 0.05;
+    bottom: 5%;
+  }
+   .footer-features-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer-component.new-footer-design {
+    padding: 20px 15px;
+  }
+  .footer-logo-brand {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .footer-main-content h2 {
+    font-size: 1.2rem;
+  }
+  .footer-legal-links a {
+    font-size: 0.75rem;
+  }
+  .payment-icon { height: 20px; }
+  .mastercard-icon { height: 25px; }
+
+  /* Повністю приховуємо на дуже малих екранах, якщо вони заважають читабельності */
+   .footer-bg-image {
+     display: none;
+   }
 }
