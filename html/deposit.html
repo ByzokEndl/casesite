@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DinoDrop Clone — Поповнення рахунку</title>
+  <link rel="stylesheet" href="/styles/style1.css" />   <!-- Загальні стилі -->
+  <link rel="stylesheet" href="/styles/header.css" />   <!-- Стилі хедера -->
+  <link rel="stylesheet" href="/styles/footer.css" />   <!-- Стилі футера -->
+  <link rel="stylesheet" href="/styles/deposit.css" /> <!-- Стилі для цієї сторінки -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Для іконок -->
+</head>
+<body>
+  <header class="site-header">
+    <!-- Вміст хедера буде завантажено сюди main.js -->
+  </header>
+
+  <main class="deposit-page">
+    <div class="deposit-container">
+      <div class="deposit-header">
+        <div class="deposit-icon-wrapper">
+          <i class="fas fa-credit-card"></i> <!-- Іконка картки -->
+        </div>
+        <div class="currency-selector">
+          <span>UKR</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+
+      <h1 class="deposit-title">Оплата з картки на картку</h1>
+
+      <div class="payment-details-card">
+        <div class="detail-item">
+          <span class="detail-label">Номер картки</span>
+          <div class="detail-value-wrapper">
+            <span class="detail-value" id="cardNumber">4102 4740 0020 0663</span>
+            <button class="copy-btn" data-clipboard-target="#cardNumber" title="Копіювати номер картки">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Сума</span>
+          <div class="detail-value-wrapper">
+            <span class="detail-value amount" id="paymentAmount">518 UAH</span>
+            <button class="copy-btn" data-clipboard-target="#paymentAmount" title="Копіювати суму">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Власник картки</span>
+          <div class="detail-value-wrapper">
+            <span class="detail-value" id="cardHolder">Руслан Аскеров</span>
+            <button class="copy-btn" data-clipboard-target="#cardHolder" title="Копіювати власника">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Банк</span>
+          <div class="detail-value-wrapper">
+            <span class="detail-value" id="bankName">Sense Bank</span>
+             <button class="copy-btn" data-clipboard-target="#bankName" title="Копіювати банк">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="detail-item comment-item">
+          <span class="detail-label">Коментар</span>
+          <p class="comment-text">Нічого не пишіть у коментарі!</p>
+        </div>
+      </div>
+
+      <div class="timer-section">
+        <span class="timer-clock" id="paymentTimer">00:09:51</span>
+        <a href="#" class="how-to-pay-link">
+          <i class="fas fa-info-circle"></i> Як сплатити? Інструкція
+        </a>
+      </div>
+
+      <div class="payment-notes">
+        <p class="notes-title">Платіж буде не успішним у разі:</p>
+        <ul>
+          <li>Не вірного вказання суми переказу</li>
+          <li>При оплаті з терміналів</li>
+          <li>Повторної оплати на одну і ту ж карту</li>
+          <li>Використанні валютних карт</li>
+        </ul>
+      </div>
+
+      <button  class="cancel-payment-btn"> <a href="/html/index.html"> Скасувати (я не здійснював оплату )</a></button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <!-- Вміст футера буде завантажено сюди main.js -->
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script> <!-- Для копіювання -->
+  <script src="/javaScript/main.js" defer></script>
+  <script src="/javaScript/deposit.js" defer></script> <!-- JS для цієї сторінки -->
+</body>
+</html>

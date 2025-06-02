@@ -1,0 +1,226 @@
+/* /casesite/styles/deposit.css */
+body {
+    background-color: #1c1c24; /* Світлий фон, як на скріншоті */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.deposit-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Вирівнювання по верху, якщо контенту мало */
+    padding: 40px 20px;
+    flex-grow: 1; /* Займає доступний простір між хедером і футером */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.deposit-container {
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 20px; /* Внутрішні відступи */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 480px; /* Ширина платіжного блоку */
+    display: flex;
+    flex-direction: column;
+}
+
+.deposit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.deposit-icon-wrapper {
+    background-color: #e0e7ff; /* Світло-блакитний фон для іконки */
+    border-radius: 12px;
+    padding: 12px;
+    display: inline-flex;
+}
+
+.deposit-icon-wrapper .fa-credit-card {
+    font-size: 20px;
+    color: #4f46e5; /* Колір іконки */
+}
+
+.currency-selector {
+    background-color: #f0f1f3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.currency-selector span {
+    margin-right: 8px;
+    color: #555;
+}
+.currency-selector .fa-chevron-down {
+    font-size: 12px;
+    color: #777;
+}
+
+.deposit-title {
+    font-size: 1.4rem; /* 22px */
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 25px;
+    text-align: left;
+    padding-left: 5px; /* Невеликий відступ, щоб відповідати скріншоту */
+}
+
+.payment-details-card {
+    background-color: #f8f9fc; /* Дуже світлий фон для блоку реквізитів */
+    border-radius: 16px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+}
+
+.detail-item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e8e9ed;
+}
+.detail-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detail-label {
+    display: block;
+    font-size: 0.8rem; /* 13px */
+    color: #6b7280; /* Сірий колір для міток */
+    margin-bottom: 4px;
+}
+
+.detail-value-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-value {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 500;
+    color: #1f2937;
+    word-break: break-all; /* Для довгих номерів карток */
+}
+.detail-value.amount {
+    font-weight: 600; /* Сума жирніша */
+}
+
+.copy-btn {
+    background-color: transparent;
+    border: none;
+    color: #4f46e5; /* Колір кнопки копіювання */
+    font-size: 1.1rem; /* Розмір іконки копіювання */
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+.copy-btn:hover {
+    background-color: #e0e7ff;
+}
+.copy-btn .far.fa-copy { /* Для Font Awesome 5 */
+    /* Якщо використовуєте Font Awesome 6, клас може бути іншим, наприклад fas fa-copy */
+}
+
+
+.comment-item .comment-text {
+    font-size: 1rem; /* 16px */
+    color: #1f2937;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.timer-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 0 5px;
+}
+
+.timer-clock {
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    color: #007aff; /* Синій колір таймера */
+}
+
+.how-to-pay-link {
+    font-size: 0.875rem; /* 14px */
+    color: #007aff;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.how-to-pay-link i {
+    margin-right: 5px;
+}
+.how-to-pay-link:hover {
+    text-decoration: underline;
+}
+
+.payment-notes {
+    background-color: #fef3c7; /* Світло-жовтий фон для приміток */
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.payment-notes .notes-title {
+    font-size: 0.9rem; /* 14px */
+    font-weight: 600;
+    color: #78350f; /* Темно-коричневий для заголовка */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.payment-notes ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.payment-notes li {
+    font-size: 0.875rem; /* 14px */
+    color: #92400e; /* Колір тексту приміток */
+    margin-bottom: 6px;
+    padding-left: 18px;
+    position: relative;
+}
+.payment-notes li::before {
+    content: "–"; /* Тире замість стандартного маркера */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.payment-notes li:last-child {
+    margin-bottom: 0;
+}
+
+.cancel-payment-btn {
+    background-color: transparent;
+    border: none;
+    color: #007aff; /* Синій колір */
+    font-size: 0.9375rem; /* 15px */
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+.cancel-payment-btn:hover {
+    background-color: #f0f1f3;
+}
