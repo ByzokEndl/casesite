@@ -1,6 +1,6 @@
 /* casesite/components/header.css */
 .site-header-component { /* Звертаємось до обгортки */
-  background-color: #0f0f16;
+  background-color: #1c1525;
   color: #fff;
   display: flex;
   justify-content: space-between;
