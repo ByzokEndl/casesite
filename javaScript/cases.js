@@ -7,30 +7,31 @@ const ALL_CASES_DATA = [];
 // ВАЖЛИВО: Замініть "URL_АБО_ШЛЯХ_ДО_ЗОБРАЖЕННЯ/..." на реальні шляхи або URL-адреси.
 // Я використовую тут описові назви файлів як плейсхолдери.
 const caseImagePlaceholders = {
-    1: "img/case_covers/case_breakout.webp", // Приклад локального шляху
-    2: "img/case_covers/case_phoenix.webp",
-    3: "img/case_covers/case_huntsman.webp",
-    4: "img/case_covers/case_chroma_1.webp",
-    5: "img/case_covers/case_chroma_2.webp",
-    6: "img/case_covers/case_chroma_3.webp",
-    7: "img/case_covers/case_gamma_1.webp",
-    8: "img/case_covers/case_gamma_2.webp",
-    9: "img/case_covers/case_spectrum_1.webp",
-    10: "img/case_covers/case_spectrum_2.webp",
-    11: "img/case_covers/case_clutch.webp",
-    12: "img/case_covers/case_horizon.webp",
-    13: "img/case_covers/case_danger_zone.webp",
-    14: "img/case_covers/case_prisma_1.webp",
-    15: "img/case_covers/case_prisma_2.webp",
-    16: "img/case_covers/case_cs20.webp",
-    17: "img/case_covers/case_shattered_web.webp",
-    18: "img/case_covers/case_fracture.webp",
-    19: "img/case_covers/case_snakebite.webp",
-    20: "img/case_covers/case_dreams_and_nightmares.webp",
+    1: "https://storage.googleapis.com/drop-skin/JACKPOT-c.webp", // Приклад локального шляху
+    2: "https://storage.googleapis.com/drop-skin/LEGENDARY-c.webp",
+    3: "https://storage.googleapis.com/drop-skin/MAGIC-c.webp",
+    4: "https://storage.googleapis.com/drop-skin/POSEIDON-c.webp",
+    5: "https://storage.googleapis.com/drop-skin/MEGAKNIGHT-с.webp",
+    6: "https://storage.googleapis.com/drop-skin/THOR-c.webp",
+    7: "https://storage.googleapis.com/drop-skin/STARLIGHT-c.webp",
+    8: "https://storage.googleapis.com/drop-skin/MONSTER-c.webp",
+    9: "https://storage.googleapis.com/drop-skin/KATANA-c.webp",
+    10: "https://storage.googleapis.com/drop-skin/NIGHTMARE-c.webp",
+    11: "/images/0.png",
+    12: "/images/1.png",
+    13: "/images/2.png",
+    14: "/images/3.png",
+    15: "/images/5.png",
+    16: "https://images.steamcdn.io/topskin/cases/ts_buddha.png",
+    17: "https://images.steamcdn.io/topskin/cases/ts_jesus.png",
+    18: "https://images.steamcdn.io/topskin/cases/ts_odin.png",
+    19: "https://images.steamcdn.io/topskin/cases/ts_ra.png",
+    20: "https://images.steamcdn.io/topskin/cases/ts_zeus.png",
+    
 };
 
 const caseNameExamples = {
-    1: "Кейс 'Прорив'",
+    1: "Кейс 'Jackpot'",
     2: "Кейс 'Фенікс'",
     3: "Кейс 'Мисливець'",
     4: "Chroma Кейс",

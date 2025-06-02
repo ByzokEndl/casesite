@@ -167,7 +167,7 @@ form .error {
 
 /* Welcome Banner from index.html */
 .welcome-banner {
-  background: url('/icegif.gif') no-repeat center center/cover; /* Ensure icegif.gif is at the root */
+  background: url('https://images.steamcdn.io/topskin/banners/event.webp?v=3') no-repeat center center/cover; /* Ensure icegif.gif is at the root */
   height: 90vh;
   display: flex;
   align-items: center;
