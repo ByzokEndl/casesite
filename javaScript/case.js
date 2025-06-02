@@ -5,21 +5,21 @@
 //    playCaseSpinSound() та stopCaseSpinSound() глобально.
 
 const originalItems = [ 
-      { name: 'Dragon Knife', price: 250, chance: 1, image: 'https://picsum.photos/id/10/200' },
-      { name: 'Tiger AK', price: 120, chance: 5, image: 'https://picsum.photos/id/20/200' },
-      { name: 'Ice M4', price: 90, chance: 8, image: 'https://picsum.photos/id/30/200' },
-      { name: 'Black Pistol', price: 45, chance: 15, image: 'https://picsum.photos/id/40/200' },
-      { name: 'Flash', price: 10, chance: 30, image: 'https://picsum.photos/id/50/200' },
-      { name: 'Toxic Gun', price: 65, chance: 10, image: 'https://picsum.photos/id/60/200' },
-      { name: 'Gold Rifle', price: 200, chance: 2, image: 'https://picsum.photos/id/70/200' },
-      { name: 'Mystic Wand', price: 35, chance: 18, image: 'https://picsum.photos/id/80/200' },
-      { name: 'Cyber SMG', price: 55, chance: 12, image: 'https://picsum.photos/id/90/200' },
-      { name: 'Shadow Glock', price: 85, chance: 9, image: 'https://picsum.photos/id/100/200' },
-      { name: 'Phoenix Shotgun', price: 140, chance: 3, image: 'https://picsum.photos/id/110/200' },
-      { name: 'Tornado Uzi', price: 70, chance: 7, image: 'https://picsum.photos/id/120/200' },
-      { name: 'Venom AR', price: 100, chance: 6, image: 'https://picsum.photos/id/130/200' },
-      { name: 'Aqua Sniper', price: 160, chance: 4, image: 'https://picsum.photos/id/140/200' },
-      { name: 'Basic Pistol', price: 5, chance: 40, image: 'https://picsum.photos/id/150/200' }
+      { name: 'Dragon Knife', price: 250, chance: 1, image: 'https://cdn.case-battle.life/images/skin/2904/middle-5c793ef629d33.png' },
+      { name: 'Tiger AK', price: 120, chance: 5, image: 'https://cdn.case-battle.life/images/skin/485/middle-5c793ba9535d5.png' },
+      { name: 'Ice M4', price: 90, chance: 8, image: 'https://cdn.case-battle.life/images/skin/18880/middle-6727242690fd3.png' },
+      { name: 'Black Pistol', price: 45, chance: 15, image: 'https://cdn.case-battle.life/images/skin/1309/middle-5c793d2609f93.png' },
+      { name: 'Flash', price: 10, chance: 30, image: 'https://cdn.case-battle.life/images/skin/2829/middle-5c793eca13da2.png' },
+      { name: 'Toxic Gun', price: 65, chance: 10, image: 'https://cdn.case-battle.life/images/skin/1826/middle-5c793d8f5307d.png' },
+      { name: 'Gold Rifle', price: 200, chance: 2, image: 'https://cdn.case-battle.life/images/skin/497/middle-67dd578315850.png' },
+      { name: 'Mystic Wand', price: 35, chance: 18, image: 'https://cdn.case-battle.life/images/skin/2419/middle-5c793e22c4454.png' },
+      { name: 'Cyber SMG', price: 55, chance: 12, image: 'https://cdn.case-battle.life/images/skin/978/middle-5c793ca0b4028.png' },
+      { name: 'Shadow Glock', price: 85, chance: 9, image: 'https://cdn.case-battle.life/images/skin/19727/middle-67f7e3fc40a23.png' },
+      { name: 'Phoenix Shotgun', price: 140, chance: 3, image: 'https://cdn.case-battle.life/images/skin/18963/middle-6732569c64cec.png' },
+      { name: 'Tornado Uzi', price: 70, chance: 7, image: 'https://cdn.case-battle.life/images/skin/1870/middle-5c793d9c9d048.png' },
+      { name: 'Venom AR', price: 100, chance: 6, image: 'https://cdn.case-battle.life/images/skin/18963/middle-6732569c64cec.png' },
+      { name: 'Aqua Sniper', price: 160, chance: 4, image: 'https://cdn.case-battle.life/images/skin/15173/middle-615427528c5a0.png' },
+      { name: 'Basic Pistol', price: 5, chance: 40, image: 'https://cdn.case-battle.life/images/skin/2419/middle-5c793e22c4454.png' }
     ];
 
     const reelElement = document.getElementById('caseItemsReel');
